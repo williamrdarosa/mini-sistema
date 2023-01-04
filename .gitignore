@@ -1,1 +1,5 @@
+#Ignorar Pastas
+
 venv/
+__pycache__/
+pages\__pycache__/
