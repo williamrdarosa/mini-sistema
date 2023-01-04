@@ -12,6 +12,10 @@
 
 ### Gerar dados para análises 
  Utilizar a ferramenta para gerar dados, para projetos de análise de dados.
+ 
+## Versão do Python
+
+- Python 3.10.9
 
 ## Bibliotecas
 
