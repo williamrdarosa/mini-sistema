@@ -1,6 +1,8 @@
 # Mini Sistema
  Sistema simples de pedidos, criado com a biblioteca Plotly Dash, da linguagem Python.
  
+![Tela Inicial](https://williamrdarosa.com.br/wp-content/uploads/2023/01/Tela-Inicial-Mini-Sistema.png)
+ 
 ## Links
 
 - [Apresentação](https://docs.google.com/presentation/d/e/2PACX-1vQFLJe7m__ef04YpBhGx50gcjvDU0-yUpIf0s9DLs9ZSIgllZE3yXh99UqDH1MAuCZH-IQWXcbLAfhJ/pub?start=false&loop=false&delayms=3000)
