@@ -6,6 +6,7 @@
 ## Links
 
 - [Apresentação](https://docs.google.com/presentation/d/e/2PACX-1vQFLJe7m__ef04YpBhGx50gcjvDU0-yUpIf0s9DLs9ZSIgllZE3yXh99UqDH1MAuCZH-IQWXcbLAfhJ/pub?start=false&loop=false&delayms=3000)
+- [Vídeo Youtube](https://www.youtube.com/watch?v=Aol0znkPSIU)
 - [Post Site](https://williamrdarosa.com.br/plotly-dash-mini-sistema/)
 
 ## Motivações para o projeto
