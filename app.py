@@ -7,6 +7,7 @@ import io
 import webbrowser
 from dash import Input, Output, State, html, dcc
 from db import consulta, inclusao
+from FuncoesPD import menu, menuSuspenso
 
 """
 Funções Banco de Dados
@@ -29,75 +30,52 @@ dfpedido = pd.DataFrame(dados)
 
 dfProduto = pd.DataFrame()
 
-"""
-Funções Gerais
-"""
-
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.PULSE], use_pages=True, update_title='Carregando...')
+
+"""
+Menu
+"""
+botoes1 = [
+    dbc.DropdownMenuItem("Inserir Dados", id="botaoC1", n_clicks=0),
+    dbc.DropdownMenuItem("Excluir Dados", id="botaoC2", n_clicks=0),
+    dbc.DropdownMenuItem("Download Dados", id="botaoC3", n_clicks=0),
+    dcc.Download(id="DadosdeColaboradores"),
+    dbc.DropdownMenuItem("Upload Dados", id="botaoC4", n_clicks=0),
+]
+botoes2 = [
+    dbc.DropdownMenuItem("Inserir Dados", id="botaoP1", n_clicks=0),
+    dbc.DropdownMenuItem("Excluir Dados", id="botaoP2", n_clicks=0),
+    dbc.DropdownMenuItem("Download Dados", id="botaoP3", n_clicks=0),
+    dcc.Download(id="DadosdeProdutos"),
+    dbc.DropdownMenuItem("Upload Dados", id="botaoP4", n_clicks=0),
+]
+botoes3 = [
+    dbc.DropdownMenuItem("Inserir Dados", id="botaoCL1", n_clicks=0),
+    dbc.DropdownMenuItem("Excluir Dados", id="botaoCL2", n_clicks=0),
+    dbc.DropdownMenuItem("Download Dados", id="botaoCL3", n_clicks=0),
+    dcc.Download(id="DadosdeClientes"),
+    dbc.DropdownMenuItem("Upload Dados", id="botaoCL4", n_clicks=0),
+]
+botoes4 = [
+    dbc.DropdownMenuItem("Pesquisar Pedidos", id="botaoPe2", href="/pesquisa"),
+    dbc.DropdownMenuItem("Download Dados", id="botaoPe3", n_clicks=0),
+    dcc.Download(id="DadosdePedidos"),
+]
+botaoMenu = dbc.Button("Inserir Pedido", href="/pedido")
+menuSuspenso1 = menuSuspenso('Colaboradores', botoes1)
+menuSuspenso2 = menuSuspenso('Produtos', botoes2)
+menuSuspenso3 = menuSuspenso('Clientes', botoes3)
+menuSuspenso4 = menuSuspenso('Pedidos', botoes4)
+menuSistema = menu("🤖 Mini Sistema", [botaoMenu, menuSuspenso1, menuSuspenso2, menuSuspenso3, menuSuspenso4])
+
+"""
+Fim Menu
+"""
 
 app.layout = html.Div(
     # Barra inicial
     [   
-        dbc.NavbarSimple(
-            children=[
-                # Botão Linkedin na barra inicial
-                dbc.Button("Inserir Pedido", href="/pedido"),
-                dbc.DropdownMenu(
-                    # Opções dados colaboradores na barra inicial
-                    children=[
-                        dbc.DropdownMenuItem("Inserir Dados", id="botaoC1", n_clicks=0),
-                        dbc.DropdownMenuItem("Excluir Dados", id="botaoC2", n_clicks=0),
-                        dbc.DropdownMenuItem("Download Dados", id="botaoC3", n_clicks=0),
-                        dcc.Download(id="DadosdeColaboradores"),
-                        dbc.DropdownMenuItem("Upload Dados", id="botaoC4", n_clicks=0),
-                    ],
-                    nav=True,
-                    in_navbar=True,
-                    label="Colaboradores",
-                ),
-                dbc.DropdownMenu(
-                    # Opções dados produtos na barra inicial
-                    children=[
-                        dbc.DropdownMenuItem("Inserir Dados", id="botaoP1", n_clicks=0),
-                        dbc.DropdownMenuItem("Excluir Dados", id="botaoP2", n_clicks=0),
-                        dbc.DropdownMenuItem("Download Dados", id="botaoP3", n_clicks=0),
-                        dcc.Download(id="DadosdeProdutos"),
-                        dbc.DropdownMenuItem("Upload Dados", id="botaoP4", n_clicks=0),
-                    ],
-                    nav=True,
-                    in_navbar=True,
-                    label="Produtos",
-                ),
-                dbc.DropdownMenu(
-                    # Opções dados colaboradores na barra inicial
-                    children=[
-                        dbc.DropdownMenuItem("Inserir Dados", id="botaoCL1", n_clicks=0),
-                        dbc.DropdownMenuItem("Excluir Dados", id="botaoCL2", n_clicks=0),
-                        dbc.DropdownMenuItem("Download Dados", id="botaoCL3", n_clicks=0),
-                        dcc.Download(id="DadosdeClientes"),
-                        dbc.DropdownMenuItem("Upload Dados", id="botaoCL4", n_clicks=0),
-                    ],
-                    nav=True,
-                    in_navbar=True,
-                    label="Clientes",
-                ),
-                dbc.DropdownMenu(
-                    # Opções dados produtos na barra inicial
-                    children=[
-                        dbc.DropdownMenuItem("Pesquisar Pedidos", id="botaoPe2", href="/pesquisa"),
-                        dbc.DropdownMenuItem("Download Dados", id="botaoPe3", n_clicks=0),
-                        dcc.Download(id="DadosdePedidos"),
-                    ],
-                    nav=True,
-                    in_navbar=True,
-                    label="Pedidos",
-                ),
-            ],
-            brand="🤖 Mini Sistema",
-            brand_href="/",
-            color="primary",
-            dark=True,
-        ),
+        menuSistema,
         html.Div([
             dash.page_container,
         ],
