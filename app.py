@@ -30,7 +30,7 @@ dfpedido = pd.DataFrame(dados)
 
 dfProduto = pd.DataFrame()
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.PULSE], use_pages=True, update_title='Carregando...')
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.PULSE], use_pages=True, update_title='Carregando...', suppress_callback_exceptions=True)
 
 """
 Menu
